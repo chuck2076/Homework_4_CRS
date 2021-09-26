@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="Develop/style.css" />
+    <script src="https://kit.fontawesome.com/cbebc77487.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!--Start Button-->
+    <div class="start-btn"><button>Start Quiz</button></div>
+
+<!--Info Box Container-->
+<div class="info-box">
+  <div class="welcome-title">
+    <span>Welcome to John's Minecraft Quiz</span>
+  </div>
+    <div class="info-list">
+        <div class="info">My name is John and Minecraft is my favorite game.<br> I wrote these questions and my dad coded this quiz!</div>
+
+    </div>
+    <div class="buttons">
+      <button class="restart">Continue</button>
+      <button class="quit">Exit Quiz</button>
+
+    </div>
+</div>
+
+<!--Quiz Box Container-->
+<div class="quiz-box">
+    <header>
+      <div class="title">John's Minecraft Quiz</div>
+      <div class="timer">
+          <div class="time-text">Time Left</div>
+          <div class="time-sec">60</div>
+      </div>
+    </header>
+    <section>
+        <div class="que-text">
+            <span>What company owns Minecraft?</span>
+        </div>
+
+        <div class="option-list">
+            <div class="option">
+                <span>Nintendo</span>
+                <div class="icon tick"><i class="fas fa-check"></i>
+            </div>
+            <div class="option">
+                <span>Microsoft</span>
+                <div class="icon cross"><i class="fas fa-times"></i>
+            </div>
+            <div class="option">
+                    <span>Playstation</span>
+            </div>
+            <div class="option">
+                    <span>XBox</span>
+            </div>
+
+        </div>
+    </section>
+    <!--Quiz Box Footer-->
+    <footer>
+        <div class="totalq">
+            <span><p>2</p><p>Of</p><p>5</p><p>Questions</p></span>
+        </div>
+        <button class="next-btn">Next Question</button>
+    </footer>
+</div>
+
+
+<script src="Develop/script.js"></script>
+    
+  </body>
+</html>
