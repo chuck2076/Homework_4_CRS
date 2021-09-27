@@ -12,24 +12,26 @@ This week’s coursework will equip you with all the skills you need to succeed 
 
 ```
 AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+the User WANT to build a timed quiz on Minecraft for my son that stores high scores
+SO THAT he can gauge his progress compared to his peers
 ```
 
 ## Acceptance Criteria
 
 ```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
+GIVEN the User am taking a code quiz
+WHEN the User clicks the start button
+THEN an information box pops up telling the User about the Quiz
+WHEN the User clicks Start Quiz
+THEN the User is taken to the first question and a timer starts
+WHEN the User answers a question
+THEN the User is presented with another question
+WHEN the User answers a question incorrectly
 THEN time is subtracted from the clock
 WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
-THEN I can save my initials and my score
+THEN the User can save their initials and score
 ```
 
 ## Mock-Up

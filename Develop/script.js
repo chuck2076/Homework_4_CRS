@@ -140,10 +140,10 @@ const bottomQuesCounter = document.querySelector("footer .totalq");
 //If Next Question button clicked, bring up quiz container and elements
 nextBtn.onclick = function(){
     if(queCount < questions.length - 1){ //if question count is less than total question length
-        queCount++; //increment the que_count value
-        queNumb++; //increment the que_numb value
+        queCount++; //increment the queCount value
+        queNumb++; //increment the queNumb value
         showQuestions(queCount); //calling show Questions function
-        queCounter(queNumb); //passing que_numb value to queCounter
+        queCounter(queNumb); //passing queNumb value to queCounter
         clearInterval(counter); //clear counter
         startTimer(timeValue); //calling startTimer function
         //timeText.textContent = "Time Left"; //change the timeText to Time Left
@@ -225,14 +225,14 @@ function showResult(){
     if (userScore > 3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag = '<span>Congrats! You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
+        scoreText.innerHTML = scoreTag;  //adding new span tag inside score-text
     }
     else if(userScore > 1){ // if user scored more than 1
         let scoreTag = '<span>Nice, You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
     }
     else{ // if user scored less than 1
-        let scoreTag = '<span>Sorry , You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
+        let scoreTag = '<span>Sorry, You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
     }
     localStorage.setItem("userScore", userScore);
