@@ -75,9 +75,13 @@ let questions = [
     },
 ];
 
+let initials;
 //Start button <div class="start-btn"> goes to Welcome Screen <div class="info-box"> display: none; to display: visible; on click
 startBtn.onclick = function() {
     infoBox.classList.add("activeInfo");
+    initials = prompt("Enter Your Initials to Save Your Score!")
+    prompt.textContent = initials;
+    localStorage.setItem("initials", initials); 
 };
 
 //Welcome screen goes back to Start button <div class="start-btn"> on click 
@@ -85,7 +89,7 @@ exitBtn.onclick = function() {
     infoBox.classList.remove("activeInfo");
 };
 
-//JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+
 //Welcome screen <button class="restart"> goes Question Screen on start <div class="quiz-box"> display: none; to display: visible;
 restartBtn.onclick = function() {
     infoBox.classList.remove("activeInfo");
@@ -95,6 +99,7 @@ restartBtn.onclick = function() {
     startTimer(15); //Calling startTimer function
 };
 
+//Creating initial values
 let timeValue =  15;
 let queCount = 0;
 let queNumb = 1;
@@ -107,9 +112,7 @@ const quitQuiz = resultBox.querySelector(".buttons .quit");
 //If restartQuiz button clicked
 restartQuiz.onclick = function () {
     window.location.reload();
-    let initials = prompt("Enter Your Initials to Save Your Score!")
-    prompt.textContent = initials;
-    localStorage.setItem("initials", initials); 
+
 }
 //    quizBox.classList.add("activeQuiz"); //show quiz box
 //    resultBox.classList.remove("activeResult"); //hide result box
@@ -127,9 +130,6 @@ restartQuiz.onclick = function () {
 
 quitQuiz.onclick = function() {
     window.location.reload();
-    let initials = prompt("Enter Your Initials to Save Your Score!")
-    prompt.textContent = initials;
-    localStorage.setItem("initials", initials); 
 }
 
 //Starting Quiz Container
@@ -176,13 +176,13 @@ function showQuestions(index) {
 }
 
 //JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
-// creating the new div tags for icons
+//Creating the new div tags for icons
 //When question answered User clicks <button class="next-btn"> to go to refresh and pull the next question
 let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 //if user clicked on option
 function optionSelected(answer){
-    //clearInterval(counter); //clear counter
+    //ClearInterval(counter); //clear counter
     let userAns = answer.textContent; //getting user selected option
     console.log (userAns);
     let correcAns = questions[queCount].answer; //getting correct answer from array
@@ -213,32 +213,65 @@ function optionSelected(answer){
     nextBtn.classList.add("show"); //show the next button if user selected any option
 }
 
-//Some help from JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+
 //When questions answered Local Storage logs to console 1/0 for correct answer
 //When all questions answered on final question sends user to Game Over Screen
 //Game Over page has Local Storage for initials and score
+
+var highScores= JSON.parse(localStorage.getItem("highScore")) || [];
+
+//var finalScore = {
+// initials: initials, 
+// score: userScore,
+//}
+
+// highScores.push(finalScore);
+
+// localStorage.setItem("highScore", highScores);
+
+let scoreText = resultBox.querySelector(".score-text");
+
 function showResult(){
     infoBox.classList.remove("activeInfo"); //hide info box
     quizBox.classList.remove("activeQuiz"); //hide quiz box
     resultBox.classList.add("activeResult"); //show result box
-    const scoreText = resultBox.querySelector(".score-text");
-    if (userScore > 3){ // if user scored more than 3
-        //creating a new span tag and passing the user score number and total question number
-        let scoreTag = '<span>Congrats! You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag;  //adding new span tag inside score-text
-    }
-    else if(userScore > 1){ // if user scored more than 1
-        let scoreTag = '<span>Nice, You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag;
-    }
-    else{ // if user scored less than 1
-        let scoreTag = '<span>Sorry, You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag;
-    }
-    localStorage.setItem("userScore", userScore);
+
+    var finalScore = {
+        initials: initials, 
+        score: userScore,
+       }
+       
+    highScores.push(finalScore);
+       
+       
+    localStorage.setItem("highScore", JSON.stringify(highScores));
+    
+    let lastScore = highScores[highScores.length -1];
+    console.log(lastScore);
+    let logInitials = lastScore.initials;
+    let logNumber = lastScore.score;
+    scoreText.textContent = (logInitials + ' scored ' + logNumber);
+    
 }
 
-//Some help from JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+
+    //if (userScore > 3){ // if user scored more than 3
+        //creating a new span tag and passing the user score number and total question number
+        //let scoreTag = '<span>Congrats! You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
+        //scoreText.innerHTML = scoreTag;  //adding new span tag inside score-text
+   // }
+    //else if(userScore > 1){ // if user scored more than 1
+     //   let scoreTag = '<span>Nice, You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
+    //    scoreText.innerHTML = scoreTag;
+   // }
+   // else{ // if user scored less than 1
+    //    let scoreTag = '<span>Sorry, You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
+    //    scoreText.innerHTML = scoreTag;
+    //}
+    
+
+
+
 //Timer function <div class="time-sec"> counts down
 //If timer reaches zero <div class="time-sec"> EVENT goes to Final Page
 function startTimer(time){
@@ -246,6 +279,7 @@ function startTimer(time){
     function timer(){
         timeCount.textContent = time; //changing the value of timeCount with time value
         time--; //decrement the time value
+    //Some help from JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
         if(time < 9){ //if timer is less than 9
             let addZero = timeCount.textContent; 
             timeCount.textContent = "0" + addZero; //add a 0 before time value
@@ -265,6 +299,8 @@ function queCounter(index){
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
     bottomQuesCounter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
+
+
 
 
 
