@@ -6,20 +6,19 @@ At some point in your journey to become a full-stack web developer, you’ll lik
 
 To help familiarize you with these tests and allow you to use the skills covered in this unit, this week’s homework invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
 
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
 
 ## User Story
 
 ```
 AS A coding boot camp student
-the User WANT to build a timed quiz on Minecraft for my son that stores high scores
+I WANT to build a timed quiz on Minecraft for my son that stores high scores
 SO THAT he can gauge his progress compared to his peers
 ```
 
 ## Acceptance Criteria
 
 ```
-GIVEN the User am taking a code quiz
+GIVEN the User is taking a code quiz
 WHEN the User clicks the start button
 THEN an information box pops up telling the User about the Quiz
 WHEN the User clicks Start Quiz
@@ -34,11 +33,11 @@ WHEN the game is over
 THEN the User can save their initials and score
 ```
 
-## Mock-Up
+## Screenshot
 
 The following animation demonstrates the application functionality:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/screencapture-chuc)
 
 ## Grading Requirements
 
