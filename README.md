@@ -35,9 +35,9 @@ THEN the User can save their initials and score
 
 ## Screenshot
 
-The following animation demonstrates the application functionality:
+The following screenshot shows the application functionality:
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](https://raw.githubusercontent.com/chuck2076/Homework_4_JavaScriptQuiz_CRS/main/Assets/screencapture-chuck2076-github-io-Homework-4.png)
+![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/screencapture-chuck2076-github-io-Homework-4.png)
 
 ## Link to Deployed Application
 
