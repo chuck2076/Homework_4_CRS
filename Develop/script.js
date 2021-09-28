@@ -74,7 +74,7 @@ let questions = [
         ]
     },
 ];
-
+//Creating initials Var from click function
 let initials;
 //Start button <div class="start-btn"> goes to Welcome Screen <div class="info-box"> display: none; to display: visible; on click
 startBtn.onclick = function() {
@@ -94,18 +94,19 @@ exitBtn.onclick = function() {
 restartBtn.onclick = function() {
     infoBox.classList.remove("activeInfo");
     quizBox.classList.add("activeQuiz");
-    showQuestions(0); //Calling showQuestions function
-    queCounter(1); //Passing 1 parameter to queCounter
-    startTimer(15); //Calling startTimer function
+    showQuestions(0); 
+    queCounter(1); 
+    startTimer(15); 
 };
 
-//Creating initial values
+//Creating initial values in Quiz Box
 let timeValue =  15;
 let queCount = 0;
 let queNumb = 1;
 let userScore = 0;
 let counter;
 
+//Var for restart and quit quiz
 const restartQuiz = resultBox.querySelector(".buttons .restart");
 const quitQuiz = resultBox.querySelector(".buttons .quit");
 
@@ -114,6 +115,7 @@ restartQuiz.onclick = function () {
     window.location.reload();
 
 }
+
 //    quizBox.classList.add("activeQuiz"); //show quiz box
 //    resultBox.classList.remove("activeResult"); //hide result box
  //   timeValue = 15; 
@@ -126,8 +128,8 @@ restartQuiz.onclick = function () {
 //    startTimer(timeValue); //calling startTimer function
 //    timeText.textContent = "Time Left"; //change the text of timeText to Time Left
 //    nextBtn.classList.remove("show"); //hide the next button
-//If quitQuiz button clicked, reload the window and prompt for initials
 
+//If quitQuiz button clicked, reload the window
 quitQuiz.onclick = function() {
     window.location.reload();
 }
@@ -136,7 +138,7 @@ quitQuiz.onclick = function() {
 const nextBtn = document.querySelector("footer .next-btn");
 const bottomQuesCounter = document.querySelector("footer .totalq");
 
-//JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+//nextBtn function from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
 //If Next Question button clicked, bring up quiz container and elements
 nextBtn.onclick = function(){
     if(queCount < questions.length - 1){ //if question count is less than total question length
@@ -154,7 +156,7 @@ nextBtn.onclick = function(){
     }
 }
 
-//JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+//showQuestions function from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
 //Getting questions and options from array
 function showQuestions(index) {
     const queText = document.querySelector (".que-text");
@@ -175,49 +177,49 @@ function showQuestions(index) {
     }
 }
 
-//JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+//Answer function from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
 //Creating the new div tags for icons
 //When question answered User clicks <button class="next-btn"> to go to refresh and pull the next question
 let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 //if user clicked on option
 function optionSelected(answer){
-    //ClearInterval(counter); //clear counter
-    let userAns = answer.textContent; //getting user selected option
+    //ClearInterval(counter); 
+    let userAns = answer.textContent; 
     console.log (userAns);
-    let correcAns = questions[queCount].answer; //getting correct answer from array
+    let correcAns = questions[queCount].answer; 
     console.log (correcAns);
-    const allOptions = optionList.children.length; //getting all option items
-    
-    if(userAns == correcAns){ //if user selected option is equal to array's correct answer
-        userScore += 1; //upgrading score value with 1
-        answer.classList.add("correct"); //adding green color to correct selected option
-        answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
+    const allOptions = optionList.children.length; 
+
+    //Correct Answer adds 1 to userScore in Local Storage
+    if(userAns == correcAns){ 
+        userScore += 1; 
+        answer.classList.add("correct"); 
+        answer.insertAdjacentHTML("beforeend", tickIconTag); 
         console.log("Correct Answer");
         console.log("Your correct answers = " + userScore);
     }else{
-        answer.classList.add("incorrect"); //adding red color to correct selected option
-        answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
+        answer.classList.add("incorrect"); 
+        answer.insertAdjacentHTML("beforeend", crossIconTag); 
         console.log("Wrong Answer");
-        for(i=0; i < allOptions; i++){
-            if(optionList.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
-                optionList.children[i].setAttribute("class", "option correct"); //adding green color to matched option
-                optionList.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
-                console.log("Auto selected correct answer.");
-            }
-        }
+//        for(i=0; i < allOptions; i++){
+//            if(optionList.children[i].textContent == correcAns){ 
+//                optionList.children[i].setAttribute("class", "option correct"); 
+//                optionList.children[i].insertAdjacentHTML("beforeend", tickIconTag); 
+//                console.log("Auto selected correct answer.");
+//            }
+//        }
+ //   }
+ //   for(i=0; i < allOptions; i++){
+//        optionList.children[i].classList.add("disabled"); 
     }
-    for(i=0; i < allOptions; i++){
-        optionList.children[i].classList.add("disabled"); //once user select an option then disabled all options
-    }
-    nextBtn.classList.add("show"); //show the next button if user selected any option
+    nextBtn.classList.add("show"); 
 }
 
 
-//When questions answered Local Storage logs to console 1/0 for correct answer
-//When all questions answered on final question sends user to Game Over Screen
-//Game Over page has Local Storage for initials and score
 
+//When all questions answered on final question sends user to Game Over Screen
+//Game Over page pulls initials and score from Local Storage
 var highScores= JSON.parse(localStorage.getItem("highScore")) || [];
 
 //var finalScore = {
@@ -228,6 +230,7 @@ var highScores= JSON.parse(localStorage.getItem("highScore")) || [];
 // highScores.push(finalScore);
 
 // localStorage.setItem("highScore", highScores);
+
 
 let scoreText = resultBox.querySelector(".score-text");
 
@@ -250,8 +253,8 @@ function showResult(){
     console.log(lastScore);
     let logInitials = lastScore.initials;
     let logNumber = lastScore.score;
-    scoreText.textContent = (logInitials + ' scored ' + logNumber);
-    
+    scoreText.textContent = (logInitials + '  scored  ' + logNumber);
+
 }
 
 
@@ -279,7 +282,7 @@ function startTimer(time){
     function timer(){
         timeCount.textContent = time; //changing the value of timeCount with time value
         time--; //decrement the time value
-    //Some help from JavaScript structure and logic from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/
+//Help from https://www.codingnepalweb.com/quiz-app-with-timer-javascript/ on addZero
         if(time < 9){ //if timer is less than 9
             let addZero = timeCount.textContent; 
             timeCount.textContent = "0" + addZero; //add a 0 before time value
