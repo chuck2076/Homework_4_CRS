@@ -41,5 +41,5 @@ The following screenshot shows the application functionality:
 
 ## Link to Deployed Application
 
-https://chuck2076.github.io/Homework_4_JavaScriptQuiz_CRS/
+https://chuck2076.github.io/JavaScriptQuiz_CRS/
 
